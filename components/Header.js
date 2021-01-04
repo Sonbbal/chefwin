@@ -1,4 +1,6 @@
+import {useState} from 'react';
 import Link from 'next/link';
+import Modal from './Modal';
 import styled from 'styled-components';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import ShoppingBasketRoundedIcon from '@material-ui/icons/ShoppingBasketRounded';
@@ -37,9 +39,14 @@ const NavigationItem = styled.span`
     }
 `;
 const NavigationButton = styled(MenuRoundedIcon)`
+    cursor:pointer;
     display:none !important;
     @media (max-width: 1200px) { 
         display:block !important;
+        color: #666;
+        &:hover {
+            color:#000;
+        }
     }
 `;
 const LoginNavigation = styled.div`
@@ -67,13 +74,22 @@ const LoginNavigationItem = styled.span`
     }
 `;
 const LoginNavigationButton = styled(ShoppingBasketRoundedIcon)`
+    cursor:pointer;
     display:none !important;
     @media (max-width: 1200px) { 
         display:block !important;
+        color: #666;
+        &:hover {
+            color:#000;
+        }
     }
 `;
 const Logo = styled.h1`
+    cursor:pointer;
     wdith: 200px;
+    &:hover {
+        opacity: 0.8;
+    }
     a {
         text-decoration: none;
     }
@@ -84,20 +100,84 @@ const Logo = styled.h1`
     img { width: 100%;}
 `;
 
-const Header = () => (
+const ModalContainer = styled.div`
+    padding-top: 50px;
+`;
+const ModalList = styled.div`
+    cursor:pointer;
+    width:100%;
+    max-width: 200px;
+    text-align: center;
+    margin:0 auto;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    &:hover {
+        color:#666;
+    }
+`;
+
+const ModalContent = ({content}) => {
+    if (content === 'product'){
+        return (
+            <ModalContainer>
+            <Link href="/list"><ModalList>냄비</ModalList></Link>
+            <Link href="/list"><ModalList>프라이팬</ModalList></Link>
+            </ModalContainer>
+        )
+    } else if (content === 'login'){
+        return (
+            <ModalContainer>
+            <ModalList>로그인</ModalList>
+            <ModalList>장바구니</ModalList>
+            </ModalContainer>
+        )
+    } else {
+        return (
+            <p>페이지오류</p>
+        )
+    }
+
+}
+
+const Header = () => {
+    const [modal, setModal] = useState(false);
+    const [modalNav, setModalNav] = useState('');
+
+    function handleNavigationModal() {
+        setModal(true);
+        setModalNav('product');
+    }
+    function handleLoginModal() {
+        setModal(true);
+        setModalNav('login');
+    }
+    function closeModal() {
+        setModal(false);
+        setModalNav('');
+    }
+    return(
+    <>
+    {modal ? (
+    <Modal left={modalNav === 'product'} closeModal={closeModal} >
+        <ModalContent content={modalNav}/>
+    </Modal>):''
+    }
     <HeeaderContainer>
         <Navigation>
             <NavigationItem><Link href="/list">냄비</Link></NavigationItem>
             <NavigationItem><Link href="/list">프라이팬</Link></NavigationItem>
-            <NavigationButton />
+            <NavigationButton onClick={() => handleNavigationModal()}/>
         </Navigation>
             <Logo><Link href="/"><img src="/logo.gif" alt="logo"/></Link></Logo>
         <LoginNavigation>
             <LoginNavigationItem>로그인</LoginNavigationItem>
             <LoginNavigationItem>장바구니</LoginNavigationItem>
-            <LoginNavigationButton />
+            <LoginNavigationButton onClick={()=> handleLoginModal()} />
         </LoginNavigation>
     </HeeaderContainer>
-)
+    </>
+)}
 
 export default Header;
