@@ -1,7 +1,9 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-  body {
+* {
+    @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
+    font-family: 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   li {
       list-style: none;
   }
+
 `
 
 const theme = {
