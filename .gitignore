@@ -1,0 +1,5 @@
+# 노드 모듈
+node_modules
+
+# 넥스트 모듈
+.next
