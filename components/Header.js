@@ -86,7 +86,7 @@ const LoginNavigationButton = styled(ShoppingBasketRoundedIcon)`
 `;
 const Logo = styled.h1`
     cursor:pointer;
-    wdith: 200px;
+    wdith: 100px;
     &:hover {
         opacity: 0.8;
     }
@@ -95,7 +95,7 @@ const Logo = styled.h1`
     }
     @media (max-width: 1200px) { 
         width: 50%;
-        max-width: 200px;
+        max-width: 100px;
     }
     img { width: 100%;}
 `;

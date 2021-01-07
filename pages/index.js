@@ -1,19 +1,13 @@
+import Head from 'next/head';
 import Layout from '../components/Layout';
+import MainPage from '../components/Main';
 
 const Main = () =>  (
     <Layout>
-        <section>
-            슬라이더 섹션
-        </section>
-        <section>
-            1단 섹션
-        </section>
-        <section>
-            2단 섹션
-        </section>
-        <section>
-            3단 섹션
-        </section>
+        <Head>
+        <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
+        </Head>
+        <MainPage />
     </Layout>
 )
 
