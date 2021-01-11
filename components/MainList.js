@@ -24,6 +24,7 @@ const InfoContainer = styled.div`
     }
     & > a {
         padding:15px 30px;
+        margin-top: 15px;
         border-radius:10px;
         border: 2px solid #b5c84b;
         color: #b5c84b;
@@ -50,17 +51,7 @@ const SubTitle = styled.p`
 const Price = styled.p`
     font-size:15px;
 `;
-const MoveButton = styled(Link)`
-    padding:15px 30px;
-    border-radius:10px;
-    border: 2px solid #b5c84b;
-    color: #b5c84b;
-    text-decoration: none;
-    &:hover {
-        color: #fff;
-        background: #b5c84b;
-    }
-`;
+
 const ImgContainer = styled.div`
     width: ${props => props.isOne ? "70%": "100%"};
     padding: ${props => props.isOne ? "0": "0 30px;"};
@@ -84,7 +75,7 @@ const MainList = ({item,isOne}) => {
                 <Title>{item.title}</Title>
                 <SubTitle>{item.subtitle}</SubTitle>
                 <Price>{numberWithCommas(item.price)}</Price>
-                <MoveButton href={item.link}>이동하기</MoveButton>                
+                <Link href={item.link}>이동하기</Link>                
             </InfoContainer>
             <ImgContainer isOne={isOne}>
                 <img src={item.img} alt={item.title} />

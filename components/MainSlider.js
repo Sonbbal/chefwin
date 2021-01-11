@@ -3,8 +3,13 @@ import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
 import styled from 'styled-components';
 
+const Container = styled.div`
+    width: 100%;
+    height: 500px;
+    position:relative;
+`;
 
-const Conatiner = styled.div`
+const SlideConatiner = styled.div`
     width: 100%;
     height: 500px;
     position:relative;
@@ -46,7 +51,7 @@ const SlideItemContainer = styled.div`
 
 const NextButton = styled(ArrowForwardIosRoundedIcon)`
     position:absolute;
-    top: 50%;
+    top: calc(50% - 24px);
     right: 50px;
     width: 3rem !important;
     height: 3rem !important;
@@ -58,7 +63,7 @@ const NextButton = styled(ArrowForwardIosRoundedIcon)`
 
 const PrevButton = styled(ArrowBackIosRoundedIcon)`
     position:absolute;
-    top: 50%;
+    top: calc(50% - 24px);
     left: 50px;
     width: 3rem !important;
     height: 3rem !important;
@@ -104,13 +109,13 @@ const MainSlider = ({items}) => {
     },[currentSlide]);
 
     return (
-        <>
-        <Conatiner ref={slideRef}>
-            {items.map(item => <SlideItem key={item.id} item={item}/>)}
-        </Conatiner>
-        <NextButton onClick={() => nextSlide()}>next</NextButton>
-        <PrevButton onClick={() => prevSlide()}>prev</PrevButton>
-        </>
+        <Container>
+            <SlideConatiner ref={slideRef}>
+                {items.map(item => <SlideItem key={item.id} item={item}/>)}
+            </SlideConatiner>
+            <NextButton onClick={() => nextSlide()}>next</NextButton>
+            <PrevButton onClick={() => prevSlide()}>prev</PrevButton>
+        </Container>
     )
 }
 
