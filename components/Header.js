@@ -166,8 +166,8 @@ const Header = () => {
     }
     <HeeaderContainer>
         <Navigation>
-            <NavigationItem><Link href="/list">냄비</Link></NavigationItem>
-            <NavigationItem><Link href="/list">프라이팬</Link></NavigationItem>
+            <NavigationItem><Link href="/list/냄비">냄비</Link></NavigationItem>
+            <NavigationItem><Link href="/list/프라이팬">프라이팬</Link></NavigationItem>
             <NavigationButton onClick={() => handleNavigationModal()}/>
         </Navigation>
             <Logo><Link href="/"><img src="/logo.gif" alt="logo"/></Link></Logo>
